@@ -1,24 +1,22 @@
 "use client"
-
-
-import { useState } from "react";
+import { useState,useCallback} from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import Input from "./inputs/Input";
 import Button from "../components/Button";
 import AuthSocialButton from "./AuthSocialButton";
-import { BsGithub ,BsGoogle} from 'react-icons/bs';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 type Variant = 'Login' | 'Register';
 const AuthForm = () => {
     const [variant, setVariant] = useState<Variant>('Login');
     const [isLoading, setIsLoading] = useState(false);
     // toggle variant
-    // const toggleVariant = useCallBack(() => {
-    //     if (variant === 'Login') {
-    //         setVariant('Register');
-    //     } else {
-    //         setVariant('Login');
-    //     }
-    // }, [variant]);
+    const toggleVariant = useCallback(() => {
+        if (variant === 'Login') {
+          setVariant('Register');
+        } else {
+          setVariant('Login');
+        }
+      }, [variant]);
 
 
     // useForm
@@ -54,6 +52,7 @@ const AuthForm = () => {
     const socialAction = (action: string) => {
         setIsLoading(true);
         // Social Login
+        console.log(action);
     }
     return (
         <div className="
@@ -149,6 +148,28 @@ const AuthForm = () => {
                             icon={BsGoogle}
                             onClick={() => socialAction('google')}
                         />
+                    </div>
+
+                    {/* Login or signUp option */}
+                    <div className="
+                    flex
+                    gap-2
+                    justify-center
+                    text-sm
+                    mt-6
+                    px-2
+                    text-gray-500
+                    ">
+                        <div>
+                            {variant === 'Login' ? 'New to messenger?' : 'Already have an account?'}
+                        </div>
+
+                        {/*  option*/}
+                        <div 
+                        onClick={toggleVariant}
+                        className="">
+                            {variant==='Login'?'Login':'Register'}
+                        </div>
                     </div>
                 </div>
             </div>
