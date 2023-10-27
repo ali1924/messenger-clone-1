@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import Input from "./inputs/Input";
 import Button from "../components/Button";
+import AuthSocialButton from "./AuthSocialButton";
+import { BsGithub ,BsGoogle} from 'react-icons/bs';
 type Variant = 'Login' | 'Register';
 const AuthForm = () => {
     const [variant, setVariant] = useState<Variant>('Login');
@@ -100,16 +102,55 @@ const AuthForm = () => {
                     {/* submit Button */}
                     <div>
                         <Button
-                        type="submit"
-                        fullWidth
-                        disabled={isLoading}
+                            type="submit"
+                            fullWidth
+                            disabled={isLoading}
                         >
                             {variant === 'Login' ? 'Login' : 'Register'}
                         </Button>
                     </div>
                 </form>
 
-                
+                {/* Social login */}
+                <div className="mt-6">
+                    <div className="relative">
+                        <div className="
+                        absolute
+                        inset-0
+                        flex
+                        item-center
+                        ">
+                            {/* border top */}
+                            <div className="w-full border-t border-gray-300"></div>
+                        </div>
+
+                        {/*  */}
+                        <div className="
+                        relative
+                        flex
+                        justify-center
+                        text-sm
+                        ">
+                            <span className="
+                            bg-white
+                            px-2
+                            text-gray-500
+                            ">Or Continue with</span>
+                        </div>
+                    </div>
+
+                    {/* Social button */}
+                    <div className="mt-6 flex gap-2">
+                        <AuthSocialButton
+                            icon={BsGithub}
+                            onClick={() => socialAction('github')}
+                        />
+                        <AuthSocialButton
+                            icon={BsGoogle}
+                            onClick={() => socialAction('google')}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
