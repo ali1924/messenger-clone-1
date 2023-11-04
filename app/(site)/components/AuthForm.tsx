@@ -78,6 +78,7 @@ const AuthForm = () => {
                     {
                         variant === 'Register' && <Input
                             id="name"
+                            type="name"
                             label="Name"
                             register={register}
                             errors={errors}
@@ -86,6 +87,7 @@ const AuthForm = () => {
                     {/* Email input */}
                     <Input
                         id="email"
+                        type="email"
                         label="Email"
                         register={register}
                         errors={errors}
@@ -93,6 +95,7 @@ const AuthForm = () => {
                     {/* Password Input */}
                     <Input
                         id="password"
+                        type="password"
                         label="Password"
                         register={register}
                         errors={errors}
@@ -115,7 +118,7 @@ const AuthForm = () => {
                     <div className="relative">
                         <div className="
                         absolute
-                        inset-0
+                        inset-3
                         flex
                         item-center
                         ">
